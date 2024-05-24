@@ -26,6 +26,9 @@ export class AppComponent {
   beingDeletedView: any
   dataToSend: any = {}
   showAdd: any
+  searchItemName: any;
+  found: boolean = false
+  foundItemDetails: any;
 
   constructor(private http: HttpClient) { }
 
@@ -158,4 +161,15 @@ export class AppComponent {
   cancelAddForm():void {
     this.showAdd = false;
   }
+
+  search(): any{
+    this.foundItemDetails =  this.allProducts.filter((product: { name: string; }) => product.name.toLowerCase().includes(this.searchItemName.toLowerCase()));
+    if (this.foundItemDetails.length != 0){
+      this.foundItemDetails = this.foundItemDetails[0]
+      this.found = true;
+    }
+  }
+
+
+
 }
