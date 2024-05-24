@@ -79,6 +79,8 @@ export class AppComponent {
     this.beingEditiedId = id
     this.beingEditiedView = view
     console.log(id, view)
+    this.showAdd = false
+    this.showDeleteConfirmation = false
 
   }
 
@@ -115,6 +117,8 @@ export class AppComponent {
     this.showDeleteConfirmation = true;
     this.beingDeletedId = id
     this.beingDeletedView = view
+    this.showAdd = false
+    this.showEdit = false
   }
 
   confirmDelete() {

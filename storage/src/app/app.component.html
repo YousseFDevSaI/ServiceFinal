@@ -80,7 +80,42 @@
 				<div class="mbr-section-head mb-5">
 					<h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
 						<strong><br></strong><br><strong>Our Products</strong><br><strong><br></strong>
+            <br><hr>
 					</h4>
+          <div *ngIf="showEdit" id="editForm" class="mbr-section-title mbr-fonts-style align-center mb-0 display-7">
+            <form (ngSubmit)="submitEditForm()">
+              <input type="text" [(ngModel)]="editedItem.price" name="price" placeholder="Price"><br>
+              <input type="text" [(ngModel)]="editedItem.material" name="material" placeholder="Material"><br>
+              <input type="text" [(ngModel)]="editedItem.photo" name="photo" placeholder="Photo"><br>
+              <input type="text" [(ngModel)]="editedItem.name" name="name" placeholder="Name"><br>
+              <button type="submit" class="btn item-btn btn-primary display-7">Submit</button>
+              <button (click)="cancelDelete()" class="btn item-btn btn-secondary display-7">cancel</button>
+            </form>
+          </div>
+
+          <div *ngIf="showDeleteConfirmation" id="deleteConfirmation" class="mbr-section-title mbr-fonts-style align-center mb-0 display-7">
+            <p>Are you sure you want to delete?</p>
+            <button (click)="confirmDelete()" class="btn item-btn btn-secondary display-7">Yes</button>
+            <button (click)="cancelDelete()" class="btn item-btn btn-primary display-7">No</button>
+          </div>
+
+          <div *ngIf="showAdd" id="addForm" class="mbr-section-title mbr-fonts-style align-center mb-0 display-7">
+            <form (ngSubmit)="submitAddForm()">
+              <label >Type: </label>
+              <select name="type" [(ngModel)]="addedItem.view">
+                <option value="stands">Stand</option>
+                <option value="products">Product</option>
+                <option value="chairs">Chair</option>
+                <option value="comods">Comod</option>
+              </select> <br>
+              <input type="text" [(ngModel)]="addedItem.price" name="price" placeholder="Price"><br>
+              <input type="text" [(ngModel)]="addedItem.material" name="material" placeholder="Material"><br>
+              <input type="text" [(ngModel)]="addedItem.photo" name="photo" placeholder="Photo"><br>
+              <input type="text" [(ngModel)]="addedItem.name" name="name" placeholder="Name"><br>
+              <button type="submit" class="btn item-btn btn-primary display-7">Submit</button>
+              <button (click)="cancelAddForm()" class="btn item-btn btn-secondary display-7">cancel</button>
+            </form>
+          </div>
 
 
 				</div>
@@ -242,34 +277,7 @@
 		</div>
 
 
-    <div *ngIf="showEdit" id="editForm" >
-      <form (ngSubmit)="submitEditForm()">
-        <input type="text" [(ngModel)]="editedItem.price" name="price" placeholder="Price"><br>
-        <input type="text" [(ngModel)]="editedItem.material" name="material" placeholder="Material"><br>
-        <input type="text" [(ngModel)]="editedItem.photo" name="photo" placeholder="Photo"><br>
-        <input type="text" [(ngModel)]="editedItem.name" name="name" placeholder="Name"><br>
-        <button type="submit">Submit</button>
-        <button (click)="cancelDelete()">cancel</button>
-      </form>
-    </div>
 
-    <div *ngIf="showDeleteConfirmation" id="deleteConfirmation">
-      <p>Are you sure you want to delete?</p>
-      <button (click)="confirmDelete()">Yes</button>
-      <button (click)="cancelDelete()">No</button>
-    </div>
-
-    <div *ngIf="showAdd" id="addForm" >
-      <form (ngSubmit)="submitAddForm()">
-        <input type="text" [(ngModel)]="addedItem.view" name="price" placeholder="Type"><br>
-        <input type="text" [(ngModel)]="addedItem.price" name="price" placeholder="Price"><br>
-        <input type="text" [(ngModel)]="addedItem.material" name="material" placeholder="Material"><br>
-        <input type="text" [(ngModel)]="addedItem.photo" name="photo" placeholder="Photo"><br>
-        <input type="text" [(ngModel)]="addedItem.name" name="name" placeholder="Name"><br>
-        <button type="submit">Submit</button>
-        <button (click)="cancelAddForm()">cancel</button>
-      </form>
-    </div>
 
 	</div>
 </section>
