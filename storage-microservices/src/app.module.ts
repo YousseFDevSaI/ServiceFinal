@@ -5,15 +5,18 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { DesksModule } from './desks/desks.module';
 import { StandsModule } from './stands/stands.module';
+import { ChairsModule } from './chairs/chairs.module';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
 
 @Module({
   
-  imports: [DesksModule,
+  imports: [
     MongooseModule.forRoot(process.env.CONNECTIONSTRING),
-    StandsModule, 
+    DesksModule,
+    StandsModule,
+    ChairsModule, 
   ],
   controllers: [AppController],
   providers: [AppService],
