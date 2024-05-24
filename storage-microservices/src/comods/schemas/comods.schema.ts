@@ -15,6 +15,9 @@ export class Comods extends Document {
 
   @Prop()
   price: number;
+
+  @Prop()
+  photo: string;
 }
 
 export const ComodsSchema = SchemaFactory.createForClass(Comods);

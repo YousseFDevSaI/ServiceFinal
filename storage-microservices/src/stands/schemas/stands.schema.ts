@@ -5,19 +5,19 @@ import { Document } from 'mongoose';
 @Schema()
 export class Stands extends Document {
   @Prop()
-  material: string;
-
-  @Prop()
   name: string;
 
   @Prop()
-  height: number;
+  material: string;
 
   @Prop({ default: Date.now })
   dayAddedToStorage: Date;
 
   @Prop()
   price: number;
+
+  @Prop()
+  photo: string;
 }
 
 export const StandsSchema = SchemaFactory.createForClass(Stands);

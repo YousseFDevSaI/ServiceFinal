@@ -5,16 +5,19 @@ import { Document } from 'mongoose';
 @Schema()
 export class DesksSchema extends Document {
   @Prop()
-  woodType: string;
-
-  @Prop()
   name: string;
 
-  @Prop({default: Date.now})
+  @Prop()
+  material: string;
+
+  @Prop({ default: Date.now })
   dayAddedToStorage: Date;
 
   @Prop()
-  Price: number;
+  price: number;
+
+  @Prop()
+  photo: string;
 }
 
 export const DeskSchema = SchemaFactory.createForClass(DesksSchema);

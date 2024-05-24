@@ -4,17 +4,21 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class Chairs extends Document {
-  @Prop()
-  material: string;
 
   @Prop()
-  color: string;
+  name: string;
+
+  @Prop()
+  material: string;
 
   @Prop({ default: Date.now })
   dayAddedToStorage: Date;
 
   @Prop()
   price: number;
+
+  @Prop()
+  photo: string;
 }
 
 export const ChairsSchema = SchemaFactory.createForClass(Chairs);
