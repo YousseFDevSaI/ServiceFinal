@@ -19,11 +19,13 @@ export class AppComponent {
   showEdit: boolean = false;
   showDeleteConfirmation: boolean = false;
   editedItem: any = {};
+  addedItem: any = {};
   beingEditiedId: any
   beingEditiedView: any
   beingDeletedId: any
   beingDeletedView: any
   dataToSend: any = {}
+  showAdd: any
 
   constructor(private http: HttpClient) { }
 
@@ -132,5 +134,24 @@ export class AppComponent {
     this.showDeleteConfirmation = false;
     this.beingDeletedId = ''
     this.beingDeletedView = ''
+  }
+
+  submitAddForm():void {
+    if (this.addedItem.view == '' || this.addedItem.name == '' || this.addedItem.price == '' || this.addedItem.material == '' || this.addedItem.photo == ''){
+      alert('Please fill all the fields')
+    }else{
+      let stringValue: string = this.addedItem.price; let intValue: number = +stringValue; this.dataToSend['price'] = intValue;
+      this.dataToSend['material'] = this.addedItem.material
+      this.dataToSend['photo'] = this.addedItem.photo
+      this.dataToSend['name'] = this.addedItem.name
+      this.http.post(this.apiUrl + this.addedItem.view, this.dataToSend).subscribe((response) => {
+        this.showAdd = false
+        this.getAll()
+      })
+    }
+  }
+
+  cancelAddForm():void {
+    this.showAdd = false;
   }
 }

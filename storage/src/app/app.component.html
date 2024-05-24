@@ -60,6 +60,10 @@
           <li class="nav-item" *ngIf="this.view == 'stands'">
 						<button class="nav-link link text-grey display-4" (click)="this.view = 'stands'">Stands</button>
 					</li>
+
+          <li class="nav-item" >
+						<button class="nav-link link text-black display-4" (click)="this.showAdd = true">Add A Product</button>
+					</li>
         </ul>
 
 			</div>
@@ -253,6 +257,18 @@
       <p>Are you sure you want to delete?</p>
       <button (click)="confirmDelete()">Yes</button>
       <button (click)="cancelDelete()">No</button>
+    </div>
+
+    <div *ngIf="showAdd" id="addForm" >
+      <form (ngSubmit)="submitAddForm()">
+        <input type="text" [(ngModel)]="addedItem.view" name="price" placeholder="Type"><br>
+        <input type="text" [(ngModel)]="addedItem.price" name="price" placeholder="Price"><br>
+        <input type="text" [(ngModel)]="addedItem.material" name="material" placeholder="Material"><br>
+        <input type="text" [(ngModel)]="addedItem.photo" name="photo" placeholder="Photo"><br>
+        <input type="text" [(ngModel)]="addedItem.name" name="name" placeholder="Name"><br>
+        <button type="submit">Submit</button>
+        <button (click)="cancelAddForm()">cancel</button>
+      </form>
     </div>
 
 	</div>
