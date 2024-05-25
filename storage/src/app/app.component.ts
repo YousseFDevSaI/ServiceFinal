@@ -34,43 +34,44 @@ export class AppComponent {
 
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
+
     this.setView('all')
     this.getAll()
   }
 
   getAll(): void {
     this.allProducts = [];
+
     this.http.get(this.apiUrl + 'desks').subscribe(
       (data) => {
         this.desks = data;
         this.desks.forEach((item: any) => {
           this.allProducts.push(item);
         });
-
-        this.http.get(this.apiUrl + 'stands').subscribe(
-          (data) => {
-            this.stands = data;
-            this.stands.forEach((item: any) => {
-              this.allProducts.push(item);
-            });
-            this.http.get(this.apiUrl + 'comods').subscribe(
-              (data) => {
-                this.comods = data;
-                this.comods.forEach((item: any) => {
-                  this.allProducts.push(item);
-                });
-                this.http.get(this.apiUrl + 'chairs').subscribe((data) => {
-                  this.chairs = data;
-                  this.chairs.forEach((item: any) => {
-                    this.allProducts.push(item);
-                  });
-                  console.log(this.allProducts)
-                });
-              });
-          });
       });
+
+      this.http.get(this.apiUrl + 'stands').subscribe(
+        (data) => {
+          this.stands = data;
+          this.stands.forEach((item: any) => {
+            this.allProducts.push(item);
+          });
+        });
+
+      this.http.get(this.apiUrl + 'comods').subscribe(
+        (data) => {
+          this.comods = data;
+          this.comods.forEach((item: any) => {
+            this.allProducts.push(item);
+          });
+        });
+
+      this.http.get(this.apiUrl + 'chairs').subscribe((data) => {
+        this.chairs = data;
+        this.chairs.forEach((item: any) => {
+          this.allProducts.push(item);
+        });
+        });
   }
 
   setView(view:string): void{
