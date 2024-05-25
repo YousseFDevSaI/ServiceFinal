@@ -95,11 +95,11 @@ export class AppComponent {
 
   submitEditForm() {
 
-    console.log('Edited item:', this.editedItem);
+
 
 
     if (this.editedItem.name != ''){this.dataToSend['name'] = this.editedItem.name}
-    if (this.editedItem.price != ''){let stringValue: string = this.editedItem.price; let intValue: number = +stringValue; this.dataToSend['price'] = intValue}
+    if (this.editedItem.price != ''){let stringValue: string = this.editedItem.price; let intValue: number = +stringValue; this.dataToSend['price'] = (Number.isNaN(intValue)) ? undefined : intValue}
     if (this.editedItem.material != ''){this.dataToSend['material'] = this.editedItem.material}
     if (this.editedItem.photo != ''){this.dataToSend['photo'] = this.editedItem.photo}
 
